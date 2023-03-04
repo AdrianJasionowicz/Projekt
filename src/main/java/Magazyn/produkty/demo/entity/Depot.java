@@ -16,12 +16,18 @@ import javax.persistence.Id;
 public class Depot {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String description;
+    private Integer price;
+    private String currency;
     private Integer capacity;
-    private Integer location;
+    private String location;
+    private Integer depotId;
 
-    public Depot(Integer id, String name, int capacity, String location) {
+  /*  public Depot(Integer id, String name, int capacity, String location) {
     }
+
+   */
 }

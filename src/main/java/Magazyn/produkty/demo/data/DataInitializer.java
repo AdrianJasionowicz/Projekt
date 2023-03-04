@@ -19,6 +19,7 @@ public class DataInitializer {
      * Ta metoda odpala sie po tym jak apka wstanie.
      * Zapisuje do bazy dwie encje magazyn1 i magazyn2.
      */
+    /*
     @EventListener(ApplicationReadyEvent.class)
     public void initializeDataAfterStartup() {
         log.info("Initializing startup data...");
@@ -32,4 +33,6 @@ public class DataInitializer {
         depotRepository.save(depot1);
         depotRepository.save(depot2);
     }
+
+     */
 }

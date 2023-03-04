@@ -15,7 +15,7 @@ public class DepotController {
         this.depotService = depotService;
     }
 
-    @GetMapping("/depots")
+    @GetMapping("/depot")
     public List<Depot> showDepot() {
         return depotService.getAll();
     }
@@ -26,7 +26,7 @@ public class DepotController {
     }
 
 
-    @PostMapping("/depots")
+    @PostMapping("/depot")
     public Depot addDepot(@RequestBody Depot object) {
         return depotService.add(object);
     }
