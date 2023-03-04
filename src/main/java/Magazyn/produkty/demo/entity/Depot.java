@@ -22,13 +22,11 @@ public class Depot {
     @Digits(integer = 5, fraction = 2)
     @DecimalMax(value = "99999.99", message = "Price can have up to 2 decimal places")
     private Double price;
-    private String currency;
+    @Column(columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
+    private String currency = "PLN";
     private Integer capacity;
-    private String location;
     private Integer depotId;
 
-  /*  public Depot(Integer id, String name, int capacity, String location) {
-    }
 
-   */
+
 }

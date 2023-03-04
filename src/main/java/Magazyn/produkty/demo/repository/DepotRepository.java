@@ -8,4 +8,5 @@ import java.util.List;
 public interface DepotRepository extends CrudRepository<Depot, Integer> {
 
     List<Depot> findAll();
+
 }
