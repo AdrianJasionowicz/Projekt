@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.Digits;
 
 @Entity
 @Data
@@ -20,7 +19,9 @@ public class Depot {
     private Integer id;
     private String name;
     private String description;
-    private Integer price;
+    @Digits(integer = 5, fraction = 2)
+    @DecimalMax(value = "99999.99", message = "Price can have up to 2 decimal places")
+    private Double price;
     private String currency;
     private Integer capacity;
     private String location;
