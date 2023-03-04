@@ -24,9 +24,12 @@ public class Depot {
     private Double price;
     @Column(columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
     private String currency = "PLN";
-    private Integer capacity;
+    @Column(columnDefinition = "INTEGER DEFAULT 0")
+    private Integer availableAmount = 0;
     private Integer depotId;
 
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "depotId")
+    private OtherEntity otherEntity;
 
 }
