@@ -3,10 +3,12 @@ package Magazyn.produkty.demo.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import Magazyn.produkty.demo.entity.Supply;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Digits;
+import java.util.List;
+import java.util.Map;
 
 @Entity
 @Data
@@ -26,10 +28,8 @@ public class Depot {
     private String currency = "PLN";
     @Column(columnDefinition = "INTEGER DEFAULT 0")
     private Integer availableAmount = 0;
-    private Integer depotId;
+    private Integer supplyIdAlt;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "depotId")
-    private OtherEntity otherEntity;
-
+    @OneToMany(mappedBy = "depot")
+    private List<Supply> supplies;
 }
