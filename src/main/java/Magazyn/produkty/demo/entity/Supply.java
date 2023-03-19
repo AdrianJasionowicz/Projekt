@@ -17,12 +17,17 @@
 
 
         @Id
-        private Integer supplyId;
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @Column(name = "depot_id")
+        private Integer depotId;
+        @Column(name = "name")
         private String name;
+        @Column(name = "location")
         private String location;
+        @Column(name = "capacity")
         private Integer capacity;
 
-        @ManyToOne(fetch = FetchType.LAZY)
-        private Depot depot;
-
+      @ManyToOne (fetch = FetchType.EAGER)
+      @JoinColumn(name = "depot_id",insertable = false, updatable = false)
+      private Depot depot;
     }

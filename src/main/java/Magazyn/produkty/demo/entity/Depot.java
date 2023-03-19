@@ -28,8 +28,8 @@ public class Depot {
     private String currency = "PLN";
     @Column(columnDefinition = "INTEGER DEFAULT 0")
     private Integer availableAmount = 0;
-    private Integer supplyIdAlt;
+    private Integer supplyId;
 
-    @OneToMany(mappedBy = "depot")
-    private List<Supply> supplies;
+  @OneToMany(mappedBy = "depot", fetch = FetchType.EAGER)
+  private List<Supply> supplies;
 }
