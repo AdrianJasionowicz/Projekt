@@ -30,6 +30,6 @@ public class Depot {
     private Integer availableAmount = 0;
     private Integer supplyId;
 
-  @OneToMany(mappedBy = "depot", fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "depot", fetch = FetchType.LAZY)
   private List<Supply> supplies;
 }
