@@ -28,7 +28,8 @@ public class Supply {
 
     private Long id;
 
-      @ManyToOne (fetch = FetchType.EAGER)
-      @JoinColumn(name = "depot_id",insertable = false, updatable = false)
-      private Depot depot;
-    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "depot_id", nullable = false)
+    private Depot depot;
+
+}
