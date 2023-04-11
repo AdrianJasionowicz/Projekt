@@ -32,12 +32,12 @@ public class Depot {
     @DecimalMax(value = "99999.99", message = "Price can have up to 2 decimal places")
     private Double price;
 
-    @Column(name = "currency" , columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
+    @Column(name = "currency", columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
     private String currency = "PLN";
     @Column(name = "available_amount", columnDefinition = "INTEGER DEFAULT 0")
     private Integer availableAmount = 0;
 
 
-   @OneToMany (mappedBy = "depot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-   private List<Supply> supplies = new ArrayList<>();
+    @OneToMany(mappedBy = "depot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Supply> supplies = new ArrayList<>();
 }

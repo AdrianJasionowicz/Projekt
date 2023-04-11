@@ -31,17 +31,17 @@ public class DepotController {
         return depotService.add(object);
     }
 
-@DeleteMapping("/depot/{id}")
+    @DeleteMapping("/depot/{id}")
     public void deleteDepot(@PathVariable Integer id) {
-depotService.deleteById(id);
-}
+        depotService.deleteById(id);
+    }
 
-@PutMapping("/depot/{id}")
-public Depot updateDepot(@RequestBody Depot updater, @PathVariable Integer id) {
- if(!updater.getId().equals(id)) {
-throw new IllegalArgumentException("Depot not found");
-}
- return depotService.updateDepot(updater);
+    @PutMapping("/depot/{id}")
+    public Depot updateDepot(@RequestBody Depot updater, @PathVariable Integer id) {
+        if (!updater.getId().equals(id)) {
+            throw new IllegalArgumentException("Depot not found");
+        }
+        return depotService.updateDepot(updater);
     }
 
 }
