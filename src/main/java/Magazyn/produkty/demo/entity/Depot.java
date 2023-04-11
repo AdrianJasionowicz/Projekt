@@ -4,9 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import Magazyn.produkty.demo.entity.Supply;
+import org.hibernate.annotations.Cascade;
+
+import javax.naming.Name;
 import javax.persistence.*;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.Digits;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -19,17 +23,21 @@ public class Depot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "name")
     private String name;
+    @Column(name = "description")
     private String description;
+    @Column(name = "price")
     @Digits(integer = 5, fraction = 2)
     @DecimalMax(value = "99999.99", message = "Price can have up to 2 decimal places")
     private Double price;
-    @Column(columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
-    private String currency = "PLN";
-    @Column(columnDefinition = "INTEGER DEFAULT 0")
-    private Integer availableAmount = 0;
-    private Integer supplyId;
 
-  @OneToMany(mappedBy = "depot", fetch = FetchType.LAZY)
-  private List<Supply> supplies;
+    @Column(name = "currency" , columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
+    private String currency = "PLN";
+    @Column(name = "available_amount", columnDefinition = "INTEGER DEFAULT 0")
+    private Integer availableAmount = 0;
+
+
+   @OneToMany (mappedBy = "depot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+   private List<Supply> supplies = new ArrayList<>();
 }

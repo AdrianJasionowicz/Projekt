@@ -25,8 +25,8 @@
         private String location;
         @Column(name = "capacity")
         private Integer capacity;
-        @Column(name = "id")
-        private Integer id;
+
+        private  Long id;
 
       @ManyToOne (fetch = FetchType.EAGER)
       @JoinColumn(name = "depot_id",insertable = false, updatable = false)
