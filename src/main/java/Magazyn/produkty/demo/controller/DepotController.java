@@ -1,7 +1,9 @@
 package Magazyn.produkty.demo.controller;
 
 import Magazyn.produkty.demo.entity.Depot;
+import Magazyn.produkty.demo.entity.DepotDTO;
 import Magazyn.produkty.demo.service.DepotService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,9 +22,20 @@ public class DepotController {
         return depotService.getAll();
     }
 
-    @GetMapping("/depot/{id}")
+ /*   @GetMapping("/depot/{id}")
     public Depot showDepot(@PathVariable Integer id) {
         return depotService.getById(id);
+    }
+*/
+    @GetMapping("/depot/{id}")
+    public ResponseEntity<DepotDTO> getDepot(@PathVariable Integer id) {
+        Depot depot = depotService.getById(id);
+        if (depot == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            DepotDTO depotDTO = new DepotDTO(depot);
+            return ResponseEntity.ok(depotDTO);
+        }
     }
 
 

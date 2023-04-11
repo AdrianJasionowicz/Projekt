@@ -26,7 +26,7 @@ public class Supply {
     @Column(name = "capacity")
     private Integer capacity;
 
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "depot_id", nullable = false)
