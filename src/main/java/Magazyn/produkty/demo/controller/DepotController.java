@@ -30,12 +30,8 @@ public class DepotController {
     @GetMapping("/depot/{id}")
     public ResponseEntity<DepotDTO> getDepot(@PathVariable Integer id) {
         Depot depot = depotService.getById(id);
-        if (depot == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            DepotDTO depotDTO = new DepotDTO(depot);
-            return ResponseEntity.ok(depotDTO);
-        }
+        DepotDTO depotDTO = new DepotDTO(depot);
+        return ResponseEntity.ok().body(depotDTO);
     }
 
 

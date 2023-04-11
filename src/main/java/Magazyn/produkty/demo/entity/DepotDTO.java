@@ -1,9 +1,11 @@
 package Magazyn.produkty.demo.entity;
 
-import Magazyn.produkty.demo.entity.Depot;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -15,7 +17,7 @@ public class DepotDTO {
     private Double price;
     private String currency;
     private Integer availableAmount;
-
+    private List<SupplyDTO> supplyDTOList;
 
     public DepotDTO(Depot depot) {
         this.id = depot.getId();
@@ -24,5 +26,14 @@ public class DepotDTO {
         this.price = depot.getPrice();
         this.currency = depot.getCurrency();
         this.availableAmount = depot.getAvailableAmount();
+        this.supplyDTOList = mapSuppliesToDTOs(depot.getSupplies());
+    }
+
+    private List<SupplyDTO> mapSuppliesToDTOs(List<Supply> supplies) {
+        List<SupplyDTO> supplyDTOs = new ArrayList<>();
+        for (Supply supply : supplies) {
+            supplyDTOs.add(new SupplyDTO(supply));
+        }
+        return supplyDTOs;
     }
 }

@@ -1,3 +1,5 @@
+package Magazyn.produkty.demo.entity;
+
 import Magazyn.produkty.demo.entity.DepotDTO;
 import Magazyn.produkty.demo.entity.Supply;
 
