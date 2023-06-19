@@ -1,8 +1,6 @@
 package Magazyn.produkty.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import Magazyn.produkty.demo.entity.Supply;
 import org.hibernate.annotations.Cascade;
 
@@ -18,6 +16,8 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Depot {
 
     @Id
@@ -31,13 +31,11 @@ public class Depot {
     @Digits(integer = 5, fraction = 2)
     @DecimalMax(value = "99999.99", message = "Price can have up to 2 decimal places")
     private Double price;
-
     @Column(name = "currency", columnDefinition = "VARCHAR(10) DEFAULT 'PLN'")
     private String currency = "PLN";
     @Column(name = "available_amount", columnDefinition = "INTEGER DEFAULT 0")
     private Integer availableAmount = 0;
-
-
-    @OneToMany(mappedBy = "depot", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Supply> supplies = new ArrayList<>();
+    @OneToMany
+    @JoinColumn(name = "depot_id")
+    private List<Supply> supply;
 }

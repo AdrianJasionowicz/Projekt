@@ -2,7 +2,11 @@ package Magazyn.produkty.demo.entity;
 
 import Magazyn.produkty.demo.entity.DepotDTO;
 import Magazyn.produkty.demo.entity.Supply;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class SupplyDTO {
 
     private Integer id;
@@ -17,16 +21,9 @@ public class SupplyDTO {
         this.location = supply.getLocation();
         this.capacity = supply.getCapacity();
         if (supply.getDepot() != null) {
-            this.depotId = supply.getDepot().getId();
+           this.depotId = supply.getDepot().getId();
         }
     }
 
-    public DepotDTO getDepotDTO() {
-        if (this.depotId != null) {
-            DepotDTO depotDTO = new DepotDTO();
-            depotDTO.setId(this.depotId);
-            return depotDTO;
-        }
-        return null;
-    }
+
 }

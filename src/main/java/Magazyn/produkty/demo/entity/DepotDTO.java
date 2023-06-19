@@ -26,7 +26,7 @@ public class DepotDTO {
         this.price = depot.getPrice();
         this.currency = depot.getCurrency();
         this.availableAmount = depot.getAvailableAmount();
-        this.supplyDTOList = mapSuppliesToDTOs(depot.getSupplies());
+        this.supplyDTOList = mapSuppliesToDTOs(depot.getSupply());
     }
 
     private List<SupplyDTO> mapSuppliesToDTOs(List<Supply> supplies) {
