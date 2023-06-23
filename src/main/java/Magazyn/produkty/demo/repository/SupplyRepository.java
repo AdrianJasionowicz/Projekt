@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface SupplyRepository extends CrudRepository<Supply, Integer>{
 
+
+
         List<Supply> findAll();
+
+
 
     }

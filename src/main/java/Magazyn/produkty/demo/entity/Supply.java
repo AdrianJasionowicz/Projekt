@@ -1,20 +1,20 @@
 package Magazyn.produkty.demo.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
 import org.apache.catalina.webresources.StandardRoot;
 
 import javax.persistence.*;
 import java.util.List;
 
-
+@ToString
+@Getter
+@Setter
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Supply {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +25,7 @@ public class Supply {
     private String location;
     @Column(name = "capacity")
     private Integer capacity;
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id", nullable = false,insertable = false,updatable = false)
     private Depot depot;

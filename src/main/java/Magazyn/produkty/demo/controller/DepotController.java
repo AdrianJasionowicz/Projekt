@@ -10,6 +10,7 @@ import java.util.List;
 
 
 @RestController
+
 public class DepotController {
     private final DepotService depotService;
 
@@ -17,7 +18,7 @@ public class DepotController {
         this.depotService = depotService;
     }
 
-    @GetMapping("/depot")
+    @GetMapping("/depots")
     public List<Depot> showDepot() {
         return depotService.getAll();
     }
@@ -27,7 +28,7 @@ public class DepotController {
         return depotService.getById(id);
     }
 */
-    @GetMapping("/depot/{id}")
+    @GetMapping("/depots/{id}")
     public ResponseEntity<DepotDTO> getDepot(@PathVariable Integer id) {
         Depot depot = depotService.getById(id);
         DepotDTO depotDTO = new DepotDTO(depot);
@@ -35,22 +36,48 @@ public class DepotController {
     }
 
 
-    @PostMapping("/depot")
-    public Depot addDepot(@RequestBody Depot object) {
-        return depotService.add(object);
+    @PostMapping("/depots")
+    public DepotDTO addDepot(@RequestBody DepotDTO dto) {
+        Depot depot = convertDTOToEntity(dto);
+                Depot updatedDepot = depotService.add(depot);
+        return convertEntityToDTO(updatedDepot);
     }
 
-    @DeleteMapping("/depot/{id}")
+    @DeleteMapping("/depots/{id}")
     public void deleteDepot(@PathVariable Integer id) {
         depotService.deleteById(id);
     }
 
-    @PutMapping("/depot/{id}")
-    public Depot updateDepot(@RequestBody Depot updater, @PathVariable Integer id) {
+    @PutMapping("/depots/{id}")
+    public DepotDTO updateDepot(@RequestBody DepotDTO updater, @PathVariable Integer id) {
         if (!updater.getId().equals(id)) {
             throw new IllegalArgumentException("Depot not found");
         }
-        return depotService.updateDepot(updater);
+        Depot depot = DepotMapper.convertDTOToEntity(updater);
+        Depot updatedDepot = depotService.updateDepot(depot);
+        return DepotMapper.convertEntityToDTO(updatedDepot);
     }
+
+
+        private Depot convertDTOToEntity(DepotDTO dto) {
+            Depot depot = new Depot();
+            depot.setId(dto.getId());
+            depot.setName(dto.getName());
+            depot.setDescription(dto.getDescription());
+
+
+            return depot;
+        }
+
+        private DepotDTO convertEntityToDTO(Depot depot) {
+            DepotDTO dto = new DepotDTO();
+            dto.setId(depot.getId());
+            dto.setName(depot.getName());
+            dto.setDescription(depot.getDescription());
+
+
+            return dto;
+        }
+
 
 }

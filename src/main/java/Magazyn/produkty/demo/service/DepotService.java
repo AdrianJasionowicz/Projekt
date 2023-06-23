@@ -27,7 +27,7 @@ public class DepotService {
 
     public Depot add(Depot object) {
         if (object.getId() != null) {
-            throw new IllegalArgumentException("Id Already exist");
+            throw new IllegalArgumentException("Depot id already exist");
         }
         return depotRepository.save(object);
     }

@@ -1,5 +1,6 @@
 package Magazyn.produkty.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import Magazyn.produkty.demo.entity.Supply;
 import org.hibernate.annotations.Cascade;
@@ -16,6 +17,7 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Getter
 @Setter
 public class Depot {
@@ -35,6 +37,7 @@ public class Depot {
     private String currency = "PLN";
     @Column(name = "available_amount", columnDefinition = "INTEGER DEFAULT 0")
     private Integer availableAmount = 0;
+    @JsonManagedReference
     @OneToMany
     @JoinColumn(name = "depot_id")
     private List<Supply> supply;
