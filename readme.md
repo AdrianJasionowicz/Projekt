@@ -1,16 +1,16 @@
 API: 
-<br>GET 
+<br>GET: 
 <br>/depots - zwraca liste wszystkich magazynow 
 <br>/depots/{id} zwraca magazyn pod danym id       
 <br>/supplies              lista lokalizacyji magazynow 
 <br>/supplies/{id}          to samo tylko pod danym id 
-<br>POST 
+<br>POST: 
 <br>/depots - dodaje nowy magazyn   
 <br>/supplies - dodaje nowa lokalizacje magazynu 
-<br>PUT <br>
+<br>PUT:
 <br>/depots/{id} - nadpisuje magazn o podanym ID  
 <br>/supplies/{id} - nadpisuje lokalizacje magazynu od id 
-<br>DELETE  
+<br>DELETE:
 <br>/depots/{id} - usuwa magazyn o podanym ID 
 <br>/supplies/{id} - usuwa lokalizacje magazynu	
 
